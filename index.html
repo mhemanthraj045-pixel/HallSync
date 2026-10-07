@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HallSync | Login & Sign Up</title>
+
+    <link rel="stylesheet" href="index.css">
+
+
+</head>
+
+<body class="login-page">
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        .form-link {
+            color: #4f46e5;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .password-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .password-wrapper input {
+            width: 100%;
+            padding-right: 42px;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #4b5563;
+            padding: 0;
+        }
+    </style>
+
+
+    <div class="login-card">
+
+
+        <div class="login-icon">
+            🏛️
+        </div>
+
+
+        <div id="loginSection">
+
+            <h1>Welcome Back</h1>
+
+            <form id="loginForm">
+
+                <label for="loginRegister">
+                    Register Number
+                </label>
+
+                <input type="text" id="loginRegister" placeholder="Enter Register Number" required>
+
+                <label for="loginPassword">
+                    Password
+                </label>
+
+                <div class="password-wrapper">
+                    <input type="password" id="loginPassword" placeholder="Enter Password" required>
+                    <button type="button" class="password-toggle" data-target="loginPassword"
+                        aria-label="Show password">◉</button>
+                </div>
+
+                <button type="submit" class="login-submit">
+                    Login
+                </button>
+
+            </form>
+
+            <p id="loginMessage"></p>
+
+            <div class="register-link">
+
+                <p>
+                    New student?
+                    <span class="form-link" onclick="showSignup()">
+                        Create Account
+                    </span>
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div id="signupSection" class="hidden">
+
+            <h1>Create Account</h1>
+
+            <form id="signupForm">
+
+                <label for="name">
+                    Full Name
+                </label>
+
+                <input type="text" id="name" placeholder="Enter Full Name" required>
+
+                <label for="signupRegister">
+                    Register Number
+                </label>
+
+                <input type="text" id="signupRegister" placeholder="Enter Register Number" required>
+
+                <label for="signupPassword">
+                    Create Password
+                </label>
+
+                <div class="password-wrapper">
+                    <input type="password" id="signupPassword" placeholder="Create Password" minlength="6" required>
+                    <button type="button" class="password-toggle" data-target="signupPassword"
+                        aria-label="Show password">◉</button>
+                </div>
+
+                <label for="confirmPassword">
+                    Confirm Password
+                </label>
+
+                <div class="password-wrapper">
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" minlength="6" required>
+                    <button type="button" class="password-toggle" data-target="confirmPassword"
+                        aria-label="Show password">◉</button>
+                </div>
+
+                <button type="submit" class="login-submit">
+                    Sign Up
+                </button>
+
+            </form>
+
+            <p id="signupMessage"></p>
+
+            <div class="register-link">
+
+                <p>
+                    Already have an account?
+                    <span class="form-link" onclick="showLogin()">
+                        Login
+                    </span>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    </main>
+
+
+    <script>
+
+        function validatePassword(password, confirmPassword) {
+
+            if (!password || !confirmPassword) {
+                return 'Please enter and confirm your password.';
+            }
+
+            if (password.length < 6) {
+                return 'Password must be at least 6 characters long.';
+            }
+
+            if (password !== confirmPassword) {
+                return 'Passwords do not match!';
+            }
+
+            return '';
+        }
+
+
+        function togglePasswordVisibility(button) {
+
+            const input = document.getElementById(button.dataset.target);
+
+            if (!input) {
+                return;
+            }
+
+            const isPasswordHidden = input.type === 'password';
+            input.type = isPasswordHidden ? 'text' : 'password';
+            button.textContent = isPasswordHidden ? '◌' : '◉';
+            button.setAttribute(
+                'aria-label',
+                isPasswordHidden ? 'Hide password' : 'Show password'
+            );
+        }
+
+
+        document.querySelectorAll('.password-toggle')
+            .forEach(function (button) {
+                button.addEventListener('click', function () {
+                    togglePasswordVisibility(button);
+                });
+            });
+
+
+        function showSignup() {
+
+            document.getElementById("loginSection")
+                .classList.add("hidden");
+
+            document.getElementById("signupSection")
+                .classList.remove("hidden");
+
+        }
+
+
+
+        function showLogin() {
+
+            document.getElementById("signupSection")
+                .classList.add("hidden");
+
+            document.getElementById("loginSection")
+                .classList.remove("hidden");
+
+        }
+
+
+
+        document.getElementById('loginForm')
+            .addEventListener('submit', async function (event) {
+
+                event.preventDefault();
+
+                const registerNumber =
+                    document.getElementById('loginRegister')
+                        .value.trim();
+
+                const password =
+                    document.getElementById('loginPassword')
+                        .value.trim();
+
+                const messageEl =
+                    document.getElementById('loginMessage');
+
+                messageEl.style.color = '#333';
+                messageEl.textContent = 'Signing in...';
+
+                try {
+
+                    const response =
+                        await fetch('/api/login', {
+
+                            method: 'POST',
+
+                            headers: {
+                                'Content-Type':
+                                    'application/json'
+                            },
+
+                            body: JSON.stringify({
+
+                                register_number:
+                                    registerNumber,
+
+                                password:
+                                    password
+
+                            })
+
+                        });
+
+
+                    const result =
+                        await response.json();
+
+
+                    if (!response.ok ||
+                        !result.success) {
+
+                        messageEl.style.color = 'red';
+                        messageEl.textContent =
+                            result.message ||
+                            'No account found. Please create an account first.';
+
+                        return;
+
+                    }
+
+
+                    localStorage.setItem('hallSyncLoggedIn', 'true');
+                    localStorage.setItem('hallSyncUser', registerNumber);
+
+                    messageEl.style.color = 'green';
+                    messageEl.textContent =
+                        'Login successful! Redirecting...';
+
+
+                    window.location.href =
+                        'H.html';
+
+
+                } catch (error) {
+
+                    messageEl.textContent =
+                        'Unable to connect to the server.';
+
+                }
+
+            });
+
+
+
+        document.getElementById('signupForm')
+            .addEventListener('submit', async function (event) {
+
+                event.preventDefault();
+
+
+                const name =
+                    document.getElementById('name')
+                        .value.trim();
+
+
+                const registerNumber =
+                    document.getElementById('signupRegister')
+                        .value.trim();
+
+
+                const password =
+                    document.getElementById('signupPassword')
+                        .value;
+
+
+                const confirmPassword =
+                    document.getElementById('confirmPassword')
+                        .value;
+
+
+                const messageEl =
+                    document.getElementById('signupMessage');
+
+                const passwordError =
+                    validatePassword(password, confirmPassword);
+
+                if (passwordError) {
+
+                    messageEl.textContent = passwordError;
+                    messageEl.style.color = 'red';
+                    return;
+
+                }
+
+
+                messageEl.textContent =
+                    'Creating account...';
+
+
+                try {
+
+                    const response =
+                        await fetch('/api/signup', {
+
+                            method: 'POST',
+
+                            headers: {
+                                'Content-Type':
+                                    'application/json'
+                            },
+
+                            body: JSON.stringify({
+
+                                name: name,
+
+                                register_number:
+                                    registerNumber,
+
+                                password: password
+
+                            })
+
+                        });
+
+
+                    const result =
+                        await response.json();
+
+
+                    if (!response.ok ||
+                        !result.success) {
+
+                        messageEl.textContent =
+                            result.message ||
+                            'Sign up failed.';
+
+                        return;
+
+                    }
+
+
+                    localStorage.setItem('hallSyncLoggedIn', 'true');
+                    localStorage.setItem('hallSyncUser', registerNumber);
+
+                    messageEl.style.color = 'green';
+                    messageEl.textContent =
+                        'Account created successfully! Redirecting...';
+
+                    setTimeout(function () {
+
+                        window.location.href = 'H.html';
+
+                    }, 800);
+
+
+                } catch (error) {
+
+                    messageEl.textContent =
+                        'Unable to connect to the server.';
+
+                }
+
+            });
+
+    </script>
+
+</body>
+
+</html>

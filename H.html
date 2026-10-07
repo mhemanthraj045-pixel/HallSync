@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HallSync | Hall Booking System</title>
+
+    <link rel="stylesheet" href="H.css">
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="logo">
+            <span>🏛️</span>
+            Hall Booking
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#halls">Halls</a>
+            <a href="#departments">Departments</a>
+            <a href="#booking">Book Hall</a>
+        </nav>
+
+    </header>
+
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <p class="small-title">
+                SMART CAMPUS SOLUTION
+            </p>
+
+            <h1>
+                Book Your Department Hall
+                <span>Smart & Easy.</span>
+            </h1>
+
+            <p>
+                Check hall availability, submit booking requests,
+                and manage your department events from one place.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#booking" class="primary-btn">
+                    Book a Hall
+                </a>
+
+                <a href="#halls" class="secondary-btn">
+                    View Halls
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <section class="today-availability" id="todayAvailability">
+        <div class="availability-heading">
+            <span class="availability-badge">LIVE STATUS</span>
+            <h2>Today's Hall Availability</h2>
+            <p id="todayDate"></p>
+        </div>
+
+        <div class="today-status-grid">
+
+            <div class="today-status-card available-card">
+                <div class="status-icon">✓</div>
+                <div>
+                    <h3>Available Halls</h3>
+                    <h1 id="todayAvailableCount">0</h1>
+                    <p>Ready for booking today</p>
+                </div>
+            </div>
+
+            <div class="today-status-card booked-card">
+                <div class="status-icon">✕</div>
+                <div>
+                    <h3>Booked Halls</h3>
+                    <h1 id="todayBookedCount">0</h1>
+                    <p>Currently booked today</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="today-hall-lists">
+            <div class="today-list available-list">
+                <h3>Available Halls Today</h3>
+                <ul id="todayAvailableHalls">
+                    <li>Loading availability...</li>
+                </ul>
+            </div>
+
+            <div class="today-list booked-list">
+                <h3>Booked Halls Today</h3>
+                <ul id="todayBookedHalls">
+                    <li>Loading bookings...</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="section" id="halls">
+
+        <div class="section-heading">
+
+            <p>
+                AVAILABLE SPACES
+            </p>
+
+            <h2>
+                Choose Your Hall
+            </h2>
+
+            <span>
+                Select a suitable hall for your department event.
+            </span>
+
+        </div>
+
+
+        <div class="hall-container">
+
+
+
+            <div class="hall-card">
+
+                <div class="hall-image seminar">
+                    🏛️
+                </div>
+
+                <div class="hall-info">
+
+                    <div class="hall-title">
+
+                        <h3>
+                            Lawley Hall
+                        </h3>
+
+                        <span class="status available">
+                            Available
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Available for college events,
+                        meetings and department programmes.
+                    </p>
+
+                    <div class="features">
+
+                        <span>
+                            🏛️ College Hall
+                        </span>
+
+                        <span>
+                            📅 Booking Available
+                        </span>
+
+                    </div>
+
+                    <button class="book-small" onclick="selectHall('Lawley Hall')">
+
+                        Book Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+
+            <div class="hall-card">
+
+                <div class="hall-image seminar">
+                    🏛️
+                </div>
+
+                <div class="hall-info">
+
+                    <div class="hall-title">
+
+                        <h3>
+                            Petrine Jubilee Hall
+                        </h3>
+
+                        <span class="status available">
+                            Available
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Suitable for college functions,
+                        meetings and programmes.
+                    </p>
+
+                    <div class="features">
+
+                        <span>
+                            🏛️ College Hall
+                        </span>
+
+                        <span>
+                            📅 Booking Available
+                        </span>
+
+                    </div>
+
+                    <button class="book-small" onclick="selectHall('Petrine Jubilee Hall')">
+
+                        Book Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+
+            <div class="hall-card">
+
+                <div class="hall-image seminar">
+                    🏢
+                </div>
+
+                <div class="hall-info">
+
+                    <div class="hall-title">
+
+                        <h3>
+                            SAIL Hall
+                        </h3>
+
+                        <span class="status available">
+                            Available
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Suitable for seminars,
+                        meetings and department events.
+                    </p>
+
+                    <div class="features">
+
+                        <span>
+                            🏛️ College Hall
+                        </span>
+
+                        <span>
+                            📅 Booking Available
+                        </span>
+
+                    </div>
+
+                    <button class="book-small" onclick="selectHall('SAIL Hall')">
+
+                        Book Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+
+            <div class="hall-card">
+
+                <div class="hall-image seminar">
+                    🏫
+                </div>
+
+                <div class="hall-info">
+
+                    <div class="hall-title">
+
+                        <h3>
+                            Community Centre
+                        </h3>
+
+                        <span class="status available">
+                            Available
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Suitable for community programmes
+                        and college events.
+                    </p>
+
+                    <div class="features">
+
+                        <span>
+                            🏛️ College Hall
+                        </span>
+
+                        <span>
+                            📅 Booking Available
+                        </span>
+
+                    </div>
+
+                    <button class="book-small" onclick="selectHall('Community Centre')">
+
+                        Book Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+
+            <div class="hall-card">
+
+                <div class="hall-image seminar">
+                    🏛️
+                </div>
+
+                <div class="hall-info">
+
+                    <div class="hall-title">
+
+                        <h3>
+                            Marian Hall
+                        </h3>
+
+                        <span class="status available">
+                            Available
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Suitable for department events,
+                        meetings and programmes.
+                    </p>
+
+                    <div class="features">
+
+                        <span>
+                            🏛️ College Hall
+                        </span>
+
+                        <span>
+                            📅 Booking Available
+                        </span>
+
+                    </div>
+
+                    <button class="book-small" onclick="selectHall('Marian Hall')">
+
+                        Book Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+
+            <div class="hall-card">
+
+                <div class="hall-image seminar">
+                    🏛️
+                </div>
+
+                <div class="hall-info">
+
+                    <div class="hall-title">
+
+                        <h3>
+                            KPJ Hall
+                        </h3>
+
+                        <span class="status available">
+                            Available
+                        </span>
+
+                    </div>
+
+                    <p>
+                        K.P. Joseph Hall for college
+                        meetings and programmes.
+                    </p>
+
+                    <div class="features">
+
+                        <span>
+                            🏛️ College Hall
+                        </span>
+
+                        <span>
+                            📅 Booking Available
+                        </span>
+
+                    </div>
+
+                    <button class="book-small" onclick="selectHall('KPJ Hall (K.P. Joseph Hall)')">
+
+                        Book Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+
+            <div class="hall-card">
+
+                <div class="hall-image seminar">
+                    🏛️
+                </div>
+
+                <div class="hall-info">
+
+                    <div class="hall-title">
+
+                        <h3>
+                            Xavier Hall
+                        </h3>
+
+                        <span class="status available">
+                            Available
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Suitable for college programmes
+                        and department events.
+                    </p>
+
+                    <div class="features">
+
+                        <span>
+                            🏛️ College Hall
+                        </span>
+
+                        <span>
+                            📅 Booking Available
+                        </span>
+
+                    </div>
+
+                    <button class="book-small" onclick="selectHall('Xavier Hall')">
+
+                        Book Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+
+            <div class="hall-card">
+
+                <div class="hall-image seminar">
+                    🏛️
+                </div>
+
+                <div class="hall-info">
+
+                    <div class="hall-title">
+
+                        <h3>
+                            Bellarmine Hall
+                        </h3>
+
+                        <span class="status available">
+                            Available
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Suitable for college events,
+                        seminars and meetings.
+                    </p>
+
+                    <div class="features">
+
+                        <span>
+                            🏛️ College Hall
+                        </span>
+
+                        <span>
+                            📅 Booking Available
+                        </span>
+
+                    </div>
+
+                    <button class="book-small" onclick="selectHall('Bellarmine Hall')">
+
+                        Book Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+
+            <div class="hall-card">
+
+                <div class="hall-image seminar">
+                    🏛️
+                </div>
+
+                <div class="hall-info">
+
+                    <div class="hall-title">
+
+                        <h3>
+                            Digby Hall
+                        </h3>
+
+                        <span class="status available">
+                            Available
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Suitable for meetings,
+                        seminars and college programmes.
+                    </p>
+
+                    <div class="features">
+
+                        <span>
+                            🏛️ College Hall
+                        </span>
+
+                        <span>
+                            📅 Booking Available
+                        </span>
+
+                    </div>
+
+                    <button class="book-small" onclick="selectHall('Digby Hall')">
+
+                        Book Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+
+    <section class="section" id="departments">
+
+        <div class="section-heading">
+
+            <p>
+                DEPARTMENTS
+            </p>
+
+            <h2>
+                Schools & Departments
+            </h2>
+
+            <span>
+                Select your department while submitting
+                a hall booking request.
+            </span>
+
+        </div>
+
+
+        <div class="hall-container">
+
+
+
+            <div class="hall-card">
+
+                <div class="hall-info">
+
+                    <h3>
+                        School of Biological Sciences
+                    </h3>
+
+                    <p>
+
+                        1. Biochemistry<br>
+                        2. Biotechnology<br>
+                        3. Botany<br>
+                        4. Zoology
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+
+            <div class="hall-card">
+
+                <div class="hall-info">
+
+                    <h3>
+                        School of Computing Sciences
+                    </h3>
+
+                    <p>
+
+                        5. Computer Science<br>
+                        6. Data Science<br>
+                        7. Information Technology<br>
+                        8. Mathematics<br>
+                        9. Statistics
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+
+            <div class="hall-card">
+
+                <div class="hall-info">
+
+                    <h3>
+                        School of Languages and Culture
+                    </h3>
+
+                    <p>
+
+                        10. English<br>
+                        11. French<br>
+                        12. Hindi<br>
+                        13. Sanskrit<br>
+                        14. Tamil
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+
+            <div class="hall-card">
+
+                <div class="hall-info">
+
+                    <h3>
+                        School of Management Studies
+                    </h3>
+
+                    <p>
+
+                        15. Business Administration (BBA)<br>
+                        16. Commerce<br>
+                        17. Commerce Computer Applications<br>
+                        18. Economics<br>
+                        19. Human Resource Management (HRM)
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+
+            <div class="hall-card">
+
+                <div class="hall-info">
+
+                    <h3>
+                        School of Physical Sciences
+                    </h3>
+
+                    <p>
+
+                        20. Chemistry<br>
+                        21. Electronics<br>
+                        22. Physics
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+
+            <div class="hall-card">
+
+                <div class="hall-info">
+
+                    <h3>
+                        Other Specialized Departments
+                    </h3>
+
+                    <p>
+
+                        23. History<br>
+                        24. Visual Communication<br>
+                        25. Counseling Psychology
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+
+    <section class="booking-section" id="booking">
+
+        <div class="booking-wrapper">
+
+
+
+            <div class="booking-text">
+
+                <p>
+                    ONLINE BOOKING
+                </p>
+
+                <h2>
+
+                    Reserve a Hall
+                    <span>
+                        for Your Event
+                    </span>
+
+                </h2>
+
+                <p>
+
+                    Fill in the details and submit your
+                    booking request. The department
+                    administrator will review your request.
+
+                </p>
+
+
+                <div class="steps">
+
+                    <div>
+
+                        <b>
+                            01
+                        </b>
+
+                        <span>
+                            Select Hall
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <b>
+                            02
+                        </b>
+
+                        <span>
+                            Choose Date & Time
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <b>
+                            03
+                        </b>
+
+                        <span>
+                            Submit Request
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
+            <div class="booking-form">
+
+                <h3>
+                    Hall Booking Request
+                </h3>
+
+
+                <form id="bookingForm">
+
+
+
+                    <label>
+                        Faculty Name
+                    </label>
+
+                    <input type="text" id="name" placeholder="Enter your name" required>
+
+
+
+
+                    <label>
+                        Department
+                    </label>
+
+                    <select id="department" required>
+
+                        <option value="">
+                            Select Department
+                        </option>
+
+
+
+                        <option>
+                            Biochemistry
+                        </option>
+
+                        <option>
+                            Biotechnology
+                        </option>
+
+                        <option>
+                            Botany
+                        </option>
+
+                        <option>
+                            Zoology
+                        </option>
+
+
+
+                        <option>
+                            Computer Science
+                        </option>
+
+                        <option>
+                            Data Science
+                        </option>
+
+                        <option>
+                            Information Technology
+                        </option>
+
+                        <option>
+                            Mathematics
+                        </option>
+
+                        <option>
+                            Statistics
+                        </option>
+
+
+
+                        <option>
+                            English
+                        </option>
+
+                        <option>
+                            French
+                        </option>
+
+                        <option>
+                            Hindi
+                        </option>
+
+                        <option>
+                            Sanskrit
+                        </option>
+
+                        <option>
+                            Tamil
+                        </option>
+
+
+
+                        <option>
+                            Business Administration (BBA)
+                        </option>
+
+                        <option>
+                            Commerce
+                        </option>
+
+                        <option>
+                            Commerce Computer Applications
+                        </option>
+
+                        <option>
+                            Economics
+                        </option>
+
+                        <option>
+                            Human Resource Management (HRM)
+                        </option>
+
+
+
+                        <option>
+                            Chemistry
+                        </option>
+
+                        <option>
+                            Electronics
+                        </option>
+
+                        <option>
+                            Physics
+                        </option>
+
+
+
+                        <option>
+                            History
+                        </option>
+
+                        <option>
+                            Visual Communication
+                        </option>
+
+                        <option>
+                            Counseling Psychology
+                        </option>
+
+                    </select>
+
+
+
+
+                    <label>
+                        Select Hall
+                    </label>
+
+                    <select id="hall" required>
+
+                        <option value="">
+                            Choose Hall
+                        </option>
+
+                        <option>
+                            Lawley Hall
+                        </option>
+
+                        <option>
+                            Petrine Jubilee Hall
+                        </option>
+
+                        <option>
+                            SAIL Hall
+                        </option>
+
+                        <option>
+                            Community Centre
+                        </option>
+
+                        <option>
+                            Marian Hall
+                        </option>
+
+                        <option>
+                            KPJ Hall (K.P. Joseph Hall)
+                        </option>
+
+                        <option>
+                            Xavier Hall
+                        </option>
+
+                        <option>
+                            Bellarmine Hall
+                        </option>
+
+                        <option>
+                            Digby Hall
+                        </option>
+
+                    </select>
+
+
+
+                    <div class="form-group">
+
+                        <label for="date">
+                            Booking Date
+                        </label>
+
+                        <input type="date" id="date" name="date" required>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div>
+
+                            <label for="startTime">
+                                Start Time
+                            </label>
+
+                            <input type="time" id="startTime" name="startTime" required>
+
+                        </div>
+
+
+                        <div>
+
+                            <label for="endTime">
+                                End Time
+                            </label>
+
+                            <input type="time" id="endTime" name="endTime" required>
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+                    <label>
+                        Event Purpose
+                    </label>
+
+                    <textarea id="purpose" placeholder="Example: Department Seminar" required></textarea>
+
+
+
+
+                    <button type="submit" class="submit-btn">
+
+                        Submit Booking Request
+
+                    </button>
+
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+    <footer>
+
+        <span>
+            © 2026 HallSync | Hall Booking System
+        </span>
+
+    </footer>
+
+
+
+
+
+    <script>
+
+        const API_URL = "";
+
+
+
+        function selectHall(hallName) {
+
+            const hallSelect = document.getElementById("hall");
+
+            hallSelect.value = hallName;
+
+            document.getElementById("booking").scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
+
+
+
+
+        const bookingForm = document.getElementById("bookingForm");
+
+        const nameInput = document.getElementById("name");
+
+        const departmentInput = document.getElementById("department");
+
+        const hallInput = document.getElementById("hall");
+
+        const dateInput = document.getElementById("date");
+
+        const startTimeInput = document.getElementById("startTime");
+
+        const endTimeInput = document.getElementById("endTime");
+
+        const purposeInput = document.getElementById("purpose");
+
+
+
+
+        const today = new Date();
+
+        const year = today.getFullYear();
+
+        const month = String(today.getMonth() + 1).padStart(2, "0");
+
+        const day = String(today.getDate()).padStart(2, "0");
+
+        const todayDate = `${year}-${month}-${day}`;
+
+        dateInput.min = todayDate;
+
+
+
+
+        async function checkHallAvailability() {
+
+            const date = dateInput.value;
+
+            const startTime = startTimeInput.value;
+
+            const endTime = endTimeInput.value;
+
+            const hall = hallInput.value;
+
+            if (!date || !startTime || !endTime || !hall) {
+                return;
+            }
+
+            if (startTime >= endTime) {
+
+                alert("End time must be after start time.");
+
+                return;
+            }
+
+            try {
+
+                const response = await fetch(
+                    `${API_URL}/api/availability?date=${encodeURIComponent(date)}&startTime=${encodeURIComponent(startTime)}&endTime=${encodeURIComponent(endTime)}`
+                );
+
+                const result = await response.json();
+
+                if (!response.ok || !result.success) {
+
+                    throw new Error(
+                        result.message || "Unable to check hall availability."
+                    );
+
+                }
+
+                const availableHalls = result.availableHalls || [];
+
+                const bookedHalls = result.bookedHalls || [];
+
+                if (availableHalls.includes(hall)) {
+
+                    alert(
+                        `${hall} is available from ${startTime} to ${endTime}.`
+                    );
+
+                } else {
+
+                    alert(
+                        `${hall} is already booked during this time.`
+                    );
+
+                }
+
+                console.log("Available halls:", availableHalls);
+
+                console.log("Booked halls:", bookedHalls);
+
+            } catch (error) {
+
+                console.error("Availability error:", error);
+
+                alert(
+                    "Unable to check availability. Make sure your backend is running."
+                );
+
+            }
+
+        }
+
+
+
+
+        dateInput.addEventListener("change", checkHallAvailability);
+
+        startTimeInput.addEventListener("change", checkHallAvailability);
+
+        endTimeInput.addEventListener("change", checkHallAvailability);
+
+        hallInput.addEventListener("change", checkHallAvailability);
+
+
+
+
+        bookingForm.addEventListener("submit", async function (event) {
+
+            event.preventDefault();
+
+            const submitButton = bookingForm.querySelector(
+                "button[type='submit']"
+            );
+
+            const registerNumber = localStorage.getItem("hallSyncUser") || "";
+
+            const name = nameInput.value.trim();
+
+            const department = departmentInput.value;
+
+            const hall = hallInput.value;
+
+            const date = dateInput.value;
+
+            const startTime = startTimeInput.value;
+
+            const endTime = endTimeInput.value;
+
+            const purpose = purposeInput.value.trim();
+
+
+
+
+            if (
+                !registerNumber ||
+                !name ||
+                !department ||
+                !hall ||
+                !date ||
+                !startTime ||
+                !endTime ||
+                !purpose
+            ) {
+
+                alert("Please login first and fill all booking details.");
+
+                return;
+
+            }
+
+            if (startTime >= endTime) {
+
+                alert("End time must be after start time.");
+
+                return;
+
+            }
+
+
+            submitButton.disabled = true;
+
+            submitButton.textContent = "Checking availability...";
+
+
+            try {
+
+
+
+                const availabilityResponse = await fetch(
+                    `${API_URL}/api/availability?date=${encodeURIComponent(date)}&startTime=${encodeURIComponent(startTime)}&endTime=${encodeURIComponent(endTime)}`
+                );
+
+                const availabilityResult =
+                    await availabilityResponse.json();
+
+                if (
+                    !availabilityResponse.ok ||
+                    !availabilityResult.success
+                ) {
+
+                    throw new Error(
+                        availabilityResult.message ||
+                        "Unable to check hall availability."
+                    );
+
+                }
+
+                const availableHalls =
+                    availabilityResult.availableHalls || [];
+
+                if (!availableHalls.includes(hall)) {
+
+                    alert(
+                        `${hall} is already booked from ${startTime} to ${endTime}. Please choose another time or hall.`
+                    );
+
+                    return;
+
+                }
+
+
+
+
+                submitButton.textContent = "Saving booking...";
+
+                const bookingData = {
+
+                    name: name,
+
+                    register_number: registerNumber,
+
+                    department: department,
+
+                    hall: hall,
+
+                    date: date,
+
+                    startTime: startTime,
+
+                    endTime: endTime,
+
+                    purpose: purpose,
+
+                    status: "Pending"
+
+                };
+
+
+                const response = await fetch(
+                    `${API_URL}/api/bookings`,
+                    {
+
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify(bookingData)
+
+                    }
+                );
+
+
+                const result = await response.json();
+
+
+                if (!response.ok || !result.success) {
+
+                    throw new Error(
+                        result.message ||
+                        "Unable to save booking details."
+                    );
+
+                }
+
+
+                alert(
+                    "Booking request submitted successfully and saved in MongoDB."
+                );
+
+
+                bookingForm.reset();
+
+                dateInput.min = todayDate;
+
+                loadTodayAvailability();
+
+
+            } catch (error) {
+
+                console.error("Booking error:", error);
+
+                alert(error.message);
+
+            } finally {
+
+                submitButton.disabled = false;
+
+                submitButton.textContent =
+                    "Submit Booking Request";
+
+            }
+
+        });
+
+        function getTodayDate() {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, "0");
+            const day = String(today.getDate()).padStart(2, "0");
+            return `${year}-${month}-${day}`;
+        }
+
+        function displayTodayDate() {
+            const today = new Date();
+            document.getElementById("todayDate").textContent =
+                today.toLocaleDateString("en-IN", {
+                    weekday: "long",
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric"
+                });
+        }
+
+        function formatBookingTime(time) {
+            if (!time) {
+                return "Time unavailable";
+            }
+
+            const [hours, minutes] = time.split(":");
+            const hour = Number(hours);
+            const suffix = hour >= 12 ? "PM" : "AM";
+            const displayHour = hour % 12 || 12;
+
+            return `${displayHour}:${minutes} ${suffix}`;
+        }
+
+        async function loadTodayAvailability() {
+            const today = getTodayDate();
+
+            try {
+                const response = await fetch(`${API_URL}/api/today-availability?date=${today}`);
+                const data = await response.json();
+
+                if (!data.success) {
+                    throw new Error(data.message || "Availability loading failed");
+                }
+
+                const availableHalls = data.availableHalls || [];
+                const bookedHalls = data.bookedHalls || [];
+
+                document.getElementById("todayAvailableCount").textContent = availableHalls.length;
+                document.getElementById("todayBookedCount").textContent = bookedHalls.length;
+
+                const availableList = document.getElementById("todayAvailableHalls");
+                const bookedList = document.getElementById("todayBookedHalls");
+
+                availableList.innerHTML = "";
+                bookedList.innerHTML = "";
+
+                if (availableHalls.length === 0) {
+                    availableList.innerHTML = "<li>No halls are available today.</li>";
+                } else {
+                    availableHalls.forEach(hall => {
+                        const li = document.createElement("li");
+                        li.textContent = "✓ " + hall;
+                        availableList.appendChild(li);
+                    });
+                }
+
+                if (bookedHalls.length === 0) {
+                    bookedList.innerHTML = "<li>No halls are booked today.</li>";
+                } else {
+                    bookedHalls.forEach(booking => {
+                        const li = document.createElement("li");
+                        if (typeof booking === "string") {
+                            li.textContent = "✕ " + booking;
+                        } else {
+                            const times = (booking.bookings || [])
+                                .map(({ startTime, endTime }) =>
+                                    `${formatBookingTime(startTime)} - ${formatBookingTime(endTime)}`
+                                )
+                                .join(", ");
+                            li.textContent = `✕ ${booking.hall} (${times || "Time unavailable"})`;
+                        }
+                        bookedList.appendChild(li);
+                    });
+                }
+
+            } catch (error) {
+                console.error("Availability error:", error);
+                document.getElementById("todayAvailableHalls").innerHTML = "<li>Unable to load availability.</li>";
+                document.getElementById("todayBookedHalls").innerHTML = "<li>Start your backend server.</li>";
+            }
+        }
+
+        displayTodayDate();
+        loadTodayAvailability();
+        setInterval(loadTodayAvailability, 30000);
+
+    </script>
+
+</body>
+
+</html>
